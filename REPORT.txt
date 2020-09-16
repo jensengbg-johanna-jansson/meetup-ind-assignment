@@ -19,7 +19,7 @@ Av: Johanna Jansson, FRK19G
     - logga in på en egen användare
 
 /* Länkar */
-  Figma-skiss:
+  Figma-skiss: https://www.figma.com/file/05bSPHcPTEFgE88ahj68CX/meetup-individual-assignment?node-id=0%3A1
   GitHub-repo: https://github.com/jensengbg-johanna-jansson/meetup-ind-assignment
   Heroku app: 
 
