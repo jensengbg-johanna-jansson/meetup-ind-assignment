@@ -7,6 +7,10 @@ Av: Johanna Jansson, FRK19G
   Heroku
   Github Actions
 
+/* Limitations */
+  Mobile First
+    Desktop-version av sidan görs om tid finns
+
 /* Krav Spec */
   Det ska gå att...
     - se kommande meetups
@@ -24,9 +28,12 @@ Av: Johanna Jansson, FRK19G
 /* Basic App Structure */
     /
     /events
-      /eventId
-        /review
-    
+      /?search
+      /:eventId
+    /signup
+    /signin
+    /user/:userId
+      /:eventId/review    
 
 /* Basic Data Structure */
 
