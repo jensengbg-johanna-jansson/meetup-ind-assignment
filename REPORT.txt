@@ -1,0 +1,54 @@
+Indivuduell Inlämningsuppgift i TDD & Docker
+
+Av: Johanna Jansson, FRK19G
+
+/* Använda Tekninker */
+  GitHub Projects
+  Heroku
+  Github Actions
+
+/* Krav Spec */
+  Det ska gå att...
+    - se kommande meetups
+    - anmäla sig till meetups,
+    - recensera en meetup man har varit på
+    - logga in på en egen användare
+
+/* Länkar */
+  Figma-skiss:
+  GitHub-repo: https://github.com/jensengbg-johanna-jansson/meetup-ind-assignment
+  Heroku app: 
+
+/* Egen Reflektion Kring Kursinnehållet */
+
+/* Basic App Structure */
+    /
+    /events
+      /eventId
+        /review
+    
+
+/* Basic Data Structure */
+
+/* User Stories */
+    Det ska gå att se kommande meetups
+        - Som användare vill jag se en lista på alla meetups som finns så jag kan browsa fritt
+          om jag inte vet vad för meetup jag vill gå på
+        - Som användare vill jag kunna filtrera meetups efter mina preferenser så jag kan se vilka
+          meetups som är intrssanta för just mig
+        - Som användare vill jag kunna gå in på en meetup och se mer info så jag vet vad det är för
+          typ av meetup
+
+    Det ska gå att anmäla sig till meetups
+        - Som användare vill jag kunna anmäla mig till en meetup så att jag kan gå på den
+        - Som användare vill jag kunna se alla meetups jag är anmäld till så jag kan hålla koll
+
+    Det ska gå att recensera en meetup man varit på
+        - Som användare vill jag kunna skriva recensioner på meetups jag varit på så att jag kan 
+          berätta för andra vad jag tyckte om dom
+
+    Det ska gå att logga in på en egen användare
+        - Som användare vill jag kunna logga in på min egen användare så att jag kan få en mer 
+          personlig användarupplevelse
+        - Som användare vill jag kunna se en profilsida med all min information så att jag vet 
+          vilken information som finns om mig på sidan
