@@ -1,0 +1,3 @@
+@mixin gradient($direction) {
+    background-image: linear-gradient($direction, $pink 0%, $orange 100%)
+}
