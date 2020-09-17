@@ -87,3 +87,7 @@ Av: Johanna Jansson, FRK19G
           personlig användarupplevelse
         - Som användare vill jag kunna se en profilsida med all min information så att jag vet 
           vilken information som finns om mig på sidan
+
+/* Docker */
+    Successfully tagged miitoappu:latest
+    docker run -it -p 8080:8080 --rm --name miito miitoappu:latest
