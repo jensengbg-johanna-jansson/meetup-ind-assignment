@@ -91,3 +91,8 @@ Av: Johanna Jansson, FRK19G
 /* Docker */
     Successfully tagged miitoappu:latest
     docker run -it -p 8080:8080 --rm --name miito miitoappu:latest
+
+    Heroku deploy that worked:
+        docker build -t registry.heroku.com/miitoappu/web .
+        docker push registry.heroku.com/miitoappu/web
+        heroku container:release --app miitoappu web
