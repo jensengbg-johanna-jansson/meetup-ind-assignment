@@ -28,7 +28,7 @@ Av: Johanna Jansson, FRK19G
 /* Basic App Structure */
     /
     /events
-      /?search
+      /search?term
       /:eventId
     /signup
     /signin
@@ -36,6 +36,34 @@ Av: Johanna Jansson, FRK19G
       /:eventId/review    
 
 /* Basic Data Structure */
+    Events
+      eventId
+      eventTitle
+      startTime
+      endTime
+      date
+      host
+      locationPlace
+      locationStreet
+      locationZip
+      locationCity
+      locationNotes
+      description
+      reviews
+      timestamp
+    Reviews
+      reviewId
+      userId
+      rating
+      review
+      timestamp
+    Users
+      userId
+      name
+      email
+      password
+      events
+
 
 /* User Stories */
     Det ska gå att se kommande meetups
