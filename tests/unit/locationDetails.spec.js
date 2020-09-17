@@ -10,7 +10,7 @@ describe('locationDetails tests', () => {
             locationCity: 'Gothenburg',
             locationNotes: 'Vi samlas vid huvudentrén för att sedan röra oss mot japandalen'
          };
-        let wrapper = shallowMount(quantityPicker, {
+        let wrapper = shallowMount(locationDetails, {
                 propsData: {
                     locationData: propDataPayload
                 }}
