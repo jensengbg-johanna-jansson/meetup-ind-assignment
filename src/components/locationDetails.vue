@@ -56,6 +56,7 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
+        color: $text;
         
         &-line {
             width: .5rem;
@@ -66,6 +67,7 @@ export default {
             background: $pink;
             @include gradient(0deg);
             background-size: 100% 16rem;
+            background-repeat: no-repeat;
             z-index: -1;
         }
 
@@ -112,7 +114,7 @@ export default {
         }
 
         &-map {
-            width: 100%;
+            width: 100vw;
             height: 180px;
             background: #888;
         }

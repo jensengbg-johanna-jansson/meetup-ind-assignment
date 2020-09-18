@@ -6,7 +6,7 @@
             <p class="event-info-place">@{{ eventData.locationPlace }}</p>
 
             <p class="event-info-heading">Hosted by</p>
-            <p>{{ eventData.host }}</p>
+            <p class="event-info-host">{{ eventData.host }}</p>
         </article>
             <svg viewBox="0 0 500 150" preserveAspectRatio="none">
                 <path d="M0.00,49.98 C147.85,150.48 373.59,-64.63 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none;"></path>
@@ -85,16 +85,20 @@ export default {
             }
             &-date {
                 font-size: .8rem;
-                font-weight: 300;
+                font-weight: 100;
                 opacity: .7;
+                margin-bottom: .4rem;
             }
             &-place {
-                font-weight: 300;
+                font-weight: 100;
                 opacity: .7;
                 margin-bottom: 2rem;
             }
             &-heading {
-                font-weight: bold;
+                font-weight: 400;
+            }
+            &-host {
+                font-weight: 100;
             }
         }
 
@@ -112,6 +116,7 @@ export default {
 
             p {
                 margin-bottom: 2rem;
+                color: $text;
             }
         }
     }

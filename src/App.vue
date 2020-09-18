@@ -13,5 +13,7 @@
 
 #app {
   font-family: 'Roboto', sans-serif;
+  letter-spacing: .2px;
+  line-height: 1.4rem;
 }
 </style>
