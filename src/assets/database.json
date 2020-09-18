@@ -1,0 +1,40 @@
+{
+    "events": [
+        {
+            "eventId": 1,
+            "eventTitle": "Hanami",
+            "startTime": "12:00",
+            "endTime": "15:30",
+            "date": "September 12",
+            "host": "Göteborgs Botaniska Trädgård",
+            "locationPlace": "Botaniska Trädgården",
+            "locationStreet": "Carl Skottsbergs Gata 22A",
+            "locationZip": "413 19",
+            "locationCity": "Gothenburg",
+            "locationNotes": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit id diam ut venenatis. Maecenas commodo sapien dapibus orci volutpat, vel maximus tellus convallis. Sed hendrerit, nunc eu pharetra finibus, ligula lacus vulputate arcu, ac lobortis est nisl sed risus.<br>Nunc vel velit posuere, vehicula sapien sit amet, facilisis nisi. Duis erat neque, ornare at cursus sit amet, varius ut augue. Vestibulum dapibus lorem dui, at imperdiet sapien maximus sit amet.",
+            "reviews": [],
+            "timestamp": "2020-09-15T12:57:46+0000",
+            "recurring": false
+        },
+        {
+            "eventId": 2,
+            "eventTitle": "Japanese conversation practice",
+            "startTime": "18:00",
+            "endTime": "20:00",
+            "date": "Wednesdays",
+            "host": "Språkcafét",
+            "locationPlace": "Språkcafét",
+            "locationStreet": "Esperantoplatsen 7-9",
+            "locationZip": "411 19",
+            "locationCity": "Gothenburg",
+            "locationNotes": "Vivamus hendrerit id diam ut venenatis.",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit id diam ut venenatis. Maecenas commodo sapien dapibus orci volutpat, vel maximus tellus convallis. Sed hendrerit, nunc eu pharetra finibus, ligula lacus vulputate arcu, ac lobortis est nisl sed risus.<br>Nunc vel velit posuere, vehicula sapien sit amet, facilisis nisi. Duis erat neque, ornare at cursus sit amet, varius ut augue. Vestibulum dapibus lorem dui, at imperdiet sapien maximus sit amet.",
+            "reviews": [],
+            "timestamp": "2020-08-11T11:57:46+0000",
+            "recurring": true
+        }
+    ],
+    "users": [],
+    "reviews": []
+}
