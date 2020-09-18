@@ -63,7 +63,9 @@ export default {
             position: absolute;
             top: 0;
             left: 1rem - .25rem;
+            background: $pink;
             @include gradient(0deg);
+            background-size: 100% 16rem;
             z-index: -1;
         }
 
@@ -82,11 +84,14 @@ export default {
                     width: 2rem;
                     height: 2rem;
                     border-radius: 2rem;
-                    font-size: 1.3rem;
-                    background: $pink;
-                    color: #fff;
                     @include centeredFlex();
                     align-self: start;
+                    font-size: 1.3rem;
+                    color: #fff;
+                    background: $pink;
+                    @include gradient(0deg);
+                    background-size: 100% 16rem;
+                    background-position-y: center;
                 }
                 &-adress-icon {
                     grid-row: span 3;
@@ -97,6 +102,12 @@ export default {
                 &-place {
                     font-weight: bold;
                 }
+            }
+            &-item:nth-child(2) span {
+                background-position-y: 0;
+            }
+            &-item:nth-child(5) span {
+                background-position-y: -12rem;
             }
         }
 
