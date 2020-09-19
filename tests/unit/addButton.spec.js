@@ -18,7 +18,7 @@ describe('addButton tests', () => {
     it('should display check-icon and disable button if the user has already joined the event', () => {
         let wrapper = shallowMount( addButton );
         let icon = wrapper.find('i');
-        let button = wrapper.find(button);
+        let button = wrapper.find('button');
         const iconClass = 'fa-user-check';
         
         const expectedIcon = true;
@@ -30,7 +30,7 @@ describe('addButton tests', () => {
 
     it('should disable the button if the meetup has already taken place', () => {
         let wrapper = shallowMount( addButton );
-        let button = wrapper.find(button);
+        let button = wrapper.find('button');
 
         expect(button.props().disabled).toBe(true);
     })
