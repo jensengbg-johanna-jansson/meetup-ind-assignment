@@ -1,0 +1,9 @@
+@mixin gradient($direction) {
+    background-image: linear-gradient($direction, $pink 0%, $orange 100%);
+}
+
+@mixin centeredFlex() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
