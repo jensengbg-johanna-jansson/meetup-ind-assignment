@@ -16,7 +16,7 @@
             <h2 class="event-details-heading">Event Details</h2>
             <p>{{ eventData.description }}</p>
 
-            <locationDetails />
+            <locationDetails :detailsData="locationDetailsData" />
         </article>
     </section>
 </template>
@@ -47,6 +47,18 @@ export default {
         }
     },
     computed: {
+        locationDetailsData() {
+            return {
+                startTime: this.eventData.startTime,
+                endTime: this.eventData.endTime,
+                date: this.eventData.date,
+                locationPlace: this.eventData.locationPlace,
+                locationStreet: this.eventData.locationStreet,
+                locationZip: this.eventData.locationZip,
+                locationCity: this.eventData.locationCity,
+                locationNotes: this.eventData.locationNotes
+            }
+        }
         /*
         eventData() {
             return { eventId: this.$route.params.eventId };

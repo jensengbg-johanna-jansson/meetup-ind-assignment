@@ -31,21 +31,7 @@
 export default {
     name: 'locationDetails',
     props: {
-        //locationData: Object
-    },
-    data() {
-        return {
-            detailsData: {
-                startTime: '12:00',
-                endTime: '15:30',
-                date: 'September 15, 2020',
-                locationPlace: 'Botaniska Trädgården',
-                locationStreet: 'Carl Skottsbergs Gata 22A',
-                locationZip: '413 19',
-                locationCity: 'Gothenburg',
-                locationNotes: 'Vi samlas vid huvudentrén för att sedan röra oss mot japandalen'
-            }
-        }
+        detailsData: Object
     }
 }
 </script>
