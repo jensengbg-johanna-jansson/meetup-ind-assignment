@@ -5,12 +5,17 @@
         <p class="join-event">Hanami</p>
         <p class="join-message">Remember to check the event details before going to the event. You can find all events you are joining on your profile page.</p>
 
+        <primaryButton :buttonText="'check profile'" />
     </section>
 </template>
 
 <script>
+import primaryButton from '@/components/ui-components/primaryButton.vue';
 export default {
-    name: 'Join'
+    name: 'Join',
+    components: {
+        primaryButton
+    }
 }
 </script>
 
@@ -49,6 +54,8 @@ export default {
         &-message {
             font-weight: 300;
             opacity: .8;
+            margin-bottom: 2rem;
+            text-align: center;
         }
     }
 </style>
