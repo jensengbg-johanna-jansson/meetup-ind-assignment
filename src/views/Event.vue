@@ -58,7 +58,6 @@ export default {
     },
     methods: {
         addUserToEvent() {
-            console.log('hejsan');
             this.$router.push('/event/1/join');
         }
     },
