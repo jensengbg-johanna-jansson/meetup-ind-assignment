@@ -8,7 +8,12 @@
             <p class="event-info-heading">Hosted by</p>
             <p class="event-info-host">{{ eventData.host }}</p>
 
-            <addButton class="event-info-join-button" :hasJoined="false" :hasEnded="false" />
+            <addButton 
+                class="event-info-join-button" 
+                :hasJoined="false" 
+                :hasEnded="false" 
+                @click.native="addUserToEvent"
+            />
         </article>
         <svg viewBox="0 0 500 150" preserveAspectRatio="none">
             <path d="M0.00,49.98 C147.85,150.48 373.59,-64.63 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none;"></path>
@@ -49,6 +54,12 @@ export default {
                 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit id diam ut venenatis. Maecenas commodo sapien dapibus orci volutpat, vel maximus tellus convallis. Sed hendrerit, nunc eu pharetra finibus, ligula lacus vulputate arcu, ac lobortis est nisl sed risus.<br>Nunc vel velit posuere, vehicula sapien sit amet, facilisis nisi. Duis erat neque, ornare at cursus sit amet, varius ut augue. Vestibulum dapibus lorem dui, at imperdiet sapien maximus sit amet.',
                 reviews: []
             }
+        }
+    },
+    methods: {
+        addUserToEvent() {
+            console.log('hejsan');
+            this.$router.push('/event/1/join');
         }
     },
     computed: {
