@@ -35,6 +35,7 @@ export default {
         box-shadow: 0 0 5px rgba(0, 0, 0, .5);
         border-radius: 1rem;
         padding: 1rem;
+        margin-bottom: 1.5rem;
         
         &-date {
             grid-row: span 3;
