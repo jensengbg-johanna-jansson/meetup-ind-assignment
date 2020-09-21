@@ -1,21 +1,17 @@
 <template>
     <section class="search-event">
-        <searchBar />
-        <eventItem 
-            v-for="item in eventsList" 
-            :key="item.eventId" 
-            :eventItem="item"
-        />
+        <searchBar class="search-event-searchbar" />
+        <eventList :eventsList="eventsList" />
     </section>
 </template>
 
 <script>
-import eventItem from '@/components/eventItem.vue';
+import eventList from '@/components/eventList.vue';
 import searchBar from '@/components/ui-components/searchBar.vue';
 export default {
     name: 'SearchEvent',
     components: {
-        eventItem,
+        eventList,
         searchBar
     },
     computed: {
@@ -62,5 +58,9 @@ export default {
         display: flex;
         flex-direction: column;
         padding: 2rem;
+
+        &-searchbar {
+            margin-bottom: 2rem;
+        }
     }
 </style>
