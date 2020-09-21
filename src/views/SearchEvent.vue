@@ -1,5 +1,6 @@
 <template>
     <section class="search-event">
+        <searchBar />
         <eventItem 
             v-for="item in eventsList" 
             :key="item.eventId" 
@@ -10,10 +11,12 @@
 
 <script>
 import eventItem from '@/components/eventItem.vue';
+import searchBar from '@/components/ui-components/searchBar.vue';
 export default {
     name: 'SearchEvent',
     components: {
-        eventItem
+        eventItem,
+        searchBar
     },
     computed: {
         eventsList() {
