@@ -7,10 +7,17 @@
 
             <p class="event-info-heading">Hosted by</p>
             <p class="event-info-host">{{ eventData.host }}</p>
+
+            <addButton 
+                class="event-info-join-button" 
+                :hasJoined="false" 
+                :hasEnded="false" 
+                @click.native="addUserToEvent"
+            />
         </article>
-            <svg viewBox="0 0 500 150" preserveAspectRatio="none">
-                <path d="M0.00,49.98 C147.85,150.48 373.59,-64.63 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none;"></path>
-            </svg>
+        <svg viewBox="0 0 500 150" preserveAspectRatio="none">
+            <path d="M0.00,49.98 C147.85,150.48 373.59,-64.63 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none;"></path>
+        </svg>
 
         <article class="event-details">
             <h2 class="event-details-heading">Event Details</h2>
@@ -23,10 +30,13 @@
 
 <script>
 import locationDetails from '@/components/locationDetails.vue';
+import addButton from '@/components/ui-components/addButton.vue';
+
 export default {
     name: 'Event',
     components: {
-        locationDetails
+        locationDetails,
+        addButton
     },
     data() {
         return {
@@ -44,6 +54,11 @@ export default {
                 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit id diam ut venenatis. Maecenas commodo sapien dapibus orci volutpat, vel maximus tellus convallis. Sed hendrerit, nunc eu pharetra finibus, ligula lacus vulputate arcu, ac lobortis est nisl sed risus.<br>Nunc vel velit posuere, vehicula sapien sit amet, facilisis nisi. Duis erat neque, ornare at cursus sit amet, varius ut augue. Vestibulum dapibus lorem dui, at imperdiet sapien maximus sit amet.',
                 reviews: []
             }
+        }
+    },
+    methods: {
+        addUserToEvent() {
+            this.$router.push('/event/1/join');
         }
     },
     computed: {
@@ -79,6 +94,7 @@ export default {
             height: 3rem; 
             width: 100%;
             transform: scale(-1, -1);
+            z-index: -1;
         }
         path {
             fill: $pink;
@@ -91,6 +107,7 @@ export default {
             padding: 2rem;
             color: #ffffff;
             @include gradient(0deg);
+            position: relative;
 
             &-title {
                 font-size: 1.5rem;
@@ -111,6 +128,11 @@ export default {
             }
             &-host {
                 font-weight: 100;
+            }
+            &-join-button {
+                position: absolute;
+                right: 2rem;
+                bottom: -3rem;
             }
         }
 

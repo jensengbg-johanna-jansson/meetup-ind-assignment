@@ -4,6 +4,9 @@ import locationDetails from '@/components/locationDetails.vue';
 describe('locationDetails tests', () => {
     it('should show the information from the data prop inside the elements', () => {
         let propDataPayload = { 
+            date: '15 september',
+            startTime: '12:00',
+            endTime: '15:30',
             locationPlace: 'Botaniska Trädgården',
             locationStreet: 'Carl Skottsbergs Gata 22A',
             locationZip: '413 19',
@@ -12,13 +15,13 @@ describe('locationDetails tests', () => {
          };
         let wrapper = shallowMount(locationDetails, {
                 propsData: {
-                    locationData: propDataPayload
+                    detailsData: propDataPayload
                 }}
             );
         
         // Test variables. change these to test different text elements
         let testData = propDataPayload.locationPlace;
-        let dataContainer = wrapper.find('.location-place-text');
+        let dataContainer = wrapper.find('.details-list-item-place');
 
         const expected = testData;
 
