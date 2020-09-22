@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Event from '../views/Event.vue'
 import Join from '../views/Join.vue'
 import SearchEvent from '../views/SearchEvent.vue'
+import Profile from '../views/Profile.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/event/:eventId/join',
     name: 'Join',
     component: Join
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
   }
 ]
 
