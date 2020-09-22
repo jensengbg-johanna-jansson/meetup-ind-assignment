@@ -11,7 +11,7 @@
             <router-link to="/search">Meetups</router-link>
             <router-link to="/">About</router-link>
             <router-link to="/">Contact</router-link>
-            <router-link to="/">Profile</router-link>
+            <router-link to="/profile">Profile</router-link>
         </nav>
     </header>
 </template>
