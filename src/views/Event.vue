@@ -31,6 +31,7 @@
 <script>
 import locationDetails from '@/components/locationDetails.vue';
 import addButton from '@/components/ui-components/addButton.vue';
+import getEvent from '@/js/eventDataFunctions.js';
 
 export default {
     name: 'Event',
@@ -40,6 +41,7 @@ export default {
     },
     data() {
         return {
+            /*
             eventData: {
                 eventTitle: 'Hanami',
                 startTime: '12:00',
@@ -54,6 +56,7 @@ export default {
                 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit id diam ut venenatis. Maecenas commodo sapien dapibus orci volutpat, vel maximus tellus convallis. Sed hendrerit, nunc eu pharetra finibus, ligula lacus vulputate arcu, ac lobortis est nisl sed risus.<br>Nunc vel velit posuere, vehicula sapien sit amet, facilisis nisi. Duis erat neque, ornare at cursus sit amet, varius ut augue. Vestibulum dapibus lorem dui, at imperdiet sapien maximus sit amet.',
                 reviews: []
             }
+            */
         }
     },
     methods: {
@@ -62,6 +65,11 @@ export default {
         }
     },
     computed: {
+        eventData() {
+            let eventId = parseInt(this.$route.params.eventId);
+            console.log(getEvent.byId(eventId));
+            return getEvent.byId(eventId);
+        },
         locationDetailsData() {
             return {
                 startTime: this.eventData.startTime,
@@ -74,11 +82,6 @@ export default {
                 locationNotes: this.eventData.locationNotes
             }
         }
-        /*
-        eventData() {
-            return { eventId: this.$route.params.eventId };
-        }
-        */
     }
 }
 </script>
