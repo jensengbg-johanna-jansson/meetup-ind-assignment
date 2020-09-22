@@ -30,7 +30,7 @@ const routes = [
     component: Join
   },
   {
-    path: '/profile',
+    path: '/profile/:userId',
     name: 'Profile',
     component: Profile
   }

@@ -19,7 +19,12 @@
 
 <script>
 export default {
-    name: 'Profile'
+    name: 'Profile',
+    computed: {
+        userData() {
+            return { userId: this.$route.params.userId };
+        }
+    }
 }
 </script>
 
