@@ -1,8 +1,18 @@
 <template>
   <div id="app">
+    <mainNav />
     <router-view/>
   </div>
 </template>
+
+<script>
+  import mainNav from '@/components/nav.vue';
+  export default { 
+    components: {
+      mainNav
+    }
+  }
+</script>
 
 <style lang="scss">
 * {
