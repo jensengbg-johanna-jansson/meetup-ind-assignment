@@ -25,6 +25,7 @@
 
             <locationDetails :detailsData="locationDetailsData" />
         </article>
+        <reviewList :reviewData="eventData.reviews" />
     </section>
 </template>
 
@@ -32,32 +33,14 @@
 import locationDetails from '@/components/locationDetails.vue';
 import addButton from '@/components/ui-components/addButton.vue';
 import getEvent from '@/js/eventDataFunctions.js';
+import reviewList from '@/components/reviewList.vue';
 
 export default {
     name: 'Event',
     components: {
         locationDetails,
-        addButton
-    },
-    data() {
-        return {
-            /*
-            eventData: {
-                eventTitle: 'Hanami',
-                startTime: '12:00',
-                endTime: '15:30',
-                date: 'September 12',
-                host: 'Göteborgs Botaniska Trädgård',
-                locationPlace: 'Botaniska Trädgården',
-                locationStreet: 'Carl Skottsbergs Gata 22A',
-                locationZip: '413 19',
-                locationCity: 'Gothenburg',
-                locationNotes: 'Vi samlas vid huvudentrén för att sedan röra oss mot japandalen',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit id diam ut venenatis. Maecenas commodo sapien dapibus orci volutpat, vel maximus tellus convallis. Sed hendrerit, nunc eu pharetra finibus, ligula lacus vulputate arcu, ac lobortis est nisl sed risus.<br>Nunc vel velit posuere, vehicula sapien sit amet, facilisis nisi. Duis erat neque, ornare at cursus sit amet, varius ut augue. Vestibulum dapibus lorem dui, at imperdiet sapien maximus sit amet.',
-                reviews: []
-            }
-            */
-        }
+        addButton,
+        reviewList
     },
     methods: {
         addUserToEvent() {
