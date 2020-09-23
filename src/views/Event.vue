@@ -25,6 +25,7 @@
 
             <locationDetails :detailsData="locationDetailsData" />
         </article>
+        <reviewList :reviewData="eventData.reviews" />
     </section>
 </template>
 
@@ -32,45 +33,27 @@
 import locationDetails from '@/components/locationDetails.vue';
 import addButton from '@/components/ui-components/addButton.vue';
 import getEvent from '@/js/eventDataFunctions.js';
+import reviewList from '@/components/reviewList.vue';
 
 export default {
     name: 'Event',
     components: {
         locationDetails,
-        addButton
+        addButton,
+        reviewList
     },
     data() {
         return {
-            /*
-            eventData: {
-                eventTitle: 'Hanami',
-                startTime: '12:00',
-                endTime: '15:30',
-                date: 'September 12',
-                host: 'Göteborgs Botaniska Trädgård',
-                locationPlace: 'Botaniska Trädgården',
-                locationStreet: 'Carl Skottsbergs Gata 22A',
-                locationZip: '413 19',
-                locationCity: 'Gothenburg',
-                locationNotes: 'Vi samlas vid huvudentrén för att sedan röra oss mot japandalen',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit id diam ut venenatis. Maecenas commodo sapien dapibus orci volutpat, vel maximus tellus convallis. Sed hendrerit, nunc eu pharetra finibus, ligula lacus vulputate arcu, ac lobortis est nisl sed risus.<br>Nunc vel velit posuere, vehicula sapien sit amet, facilisis nisi. Duis erat neque, ornare at cursus sit amet, varius ut augue. Vestibulum dapibus lorem dui, at imperdiet sapien maximus sit amet.',
-                reviews: []
-            }
-            */
+            eventData: '',
+            locationDetailsData: ''
         }
     },
     methods: {
         addUserToEvent() {
             this.$router.push('/event/1/join');
-        }
-    },
-    computed: {
-        eventData() {
-            let eventId = this.$route.params.eventId;
-            return getEvent.byId(eventId);
         },
-        locationDetailsData() {
-            return {
+        setLocationDetails() {
+            this.locationDetailsData = {
                 startTime: this.eventData.startTime,
                 endTime: this.eventData.endTime,
                 date: this.eventData.date,
@@ -80,7 +63,19 @@ export default {
                 locationCity: this.eventData.locationCity,
                 locationNotes: this.eventData.locationNotes
             }
-        }
+        },
+        async setEventData() {
+            let eventId = this.$route.params.eventId;
+            const event = await getEvent.byId(eventId);
+            console.log(event);
+            this.eventData = event;
+
+            this.setLocationDetails();
+            //return event;
+        },
+    },
+    created() {
+        this.setEventData();
     }
 }
 </script>

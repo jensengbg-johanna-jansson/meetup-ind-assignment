@@ -3,7 +3,9 @@ import mainNav from '@/components/nav.vue';
 
 describe('mainNav tests', () => {
     it('should show menu on click', async () => {
-        let wrapper = shallowMount(mainNav);
+        let wrapper = shallowMount(mainNav, {
+            stubs: ['router-link', 'router-view']
+        });
         const button =  wrapper.find('button');
 
         await button.trigger('click');
@@ -12,7 +14,9 @@ describe('mainNav tests', () => {
     })
 
     it('should hide menu if clicked twice', async () => {
-        let wrapper = shallowMount(mainNav);
+        let wrapper = shallowMount(mainNav, {
+            stubs: ['router-link', 'router-view']
+        });
         const button =  wrapper.find('button');
 
         await button.trigger('click');

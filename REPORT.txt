@@ -81,6 +81,8 @@ Av: Johanna Jansson, FRK19G
     Det ska gå att recensera en meetup man varit på
         - Som användare vill jag kunna skriva recensioner på meetups jag varit på så att jag kan 
           berätta för andra vad jag tyckte om dom
+        - Som användare vill jag kunna läsa vad andra tyckte om eventet så jag vet hur det var ifall 
+          det hålls igen
 
     Det ska gå att logga in på en egen användare
         - Som användare vill jag kunna logga in på min egen användare så att jag kan få en mer 
