@@ -3,8 +3,8 @@ const events = data.events;
 
 let getEvent = {
     byId(id) {
-        //console.log(events);
-        return events.find( ({ eventId }) => eventId === id );
+        const eventIdToInt = parseInt(id);
+        return events.find( ({ eventId }) => eventId === eventIdToInt );
     },
     all() {
         return events;
