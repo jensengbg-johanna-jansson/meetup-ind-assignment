@@ -2,23 +2,6 @@ import { shallowMount, mount } from '@vue/test-utils';
 import VueRouter from 'vue-router';
 import Event from '@/views/Event.vue';
 
-function createConfig (overrides) {
-    const id = 1;
-    const mocks = {
-        // Vue Router
-        $router: {
-            push: () => {}
-        },
-        // Vuex
-        $store: {
-            state: [ { id } ],
-            commit: () => {}
-        }
-    };
-    const propsData = { id };
-    return Object.assign({ mocks, propsData }, overrides);
-}
-
 describe('Event page tests', () => {
     it('should extract eventId from the URL', () => {
         const testId = 1;
@@ -49,6 +32,11 @@ describe('Event page tests', () => {
         let wrapper = mount(Event, {
             mocks: {
                 $router,
+                $route: {
+                    params: {
+                        eventId: testId
+                    }
+                },
             }
         });
 
