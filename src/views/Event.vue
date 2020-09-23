@@ -66,8 +66,7 @@ export default {
     },
     computed: {
         eventData() {
-            let eventId = parseInt(this.$route.params.eventId);
-            console.log(getEvent.byId(eventId));
+            let eventId = this.$route.params.eventId;
             return getEvent.byId(eventId);
         },
         locationDetailsData() {
