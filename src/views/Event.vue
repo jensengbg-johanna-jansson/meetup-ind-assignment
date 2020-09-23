@@ -42,18 +42,18 @@ export default {
         addButton,
         reviewList
     },
+    data() {
+        return {
+            eventData: '',
+            locationDetailsData: ''
+        }
+    },
     methods: {
         addUserToEvent() {
             this.$router.push('/event/1/join');
-        }
-    },
-    computed: {
-        eventData() {
-            let eventId = this.$route.params.eventId;
-            return getEvent.byId(eventId);
         },
-        locationDetailsData() {
-            return {
+        setLocationDetails() {
+            this.locationDetailsData = {
                 startTime: this.eventData.startTime,
                 endTime: this.eventData.endTime,
                 date: this.eventData.date,
@@ -63,7 +63,19 @@ export default {
                 locationCity: this.eventData.locationCity,
                 locationNotes: this.eventData.locationNotes
             }
-        }
+        },
+        async setEventData() {
+            let eventId = this.$route.params.eventId;
+            const event = await getEvent.byId(eventId);
+            console.log(event);
+            this.eventData = event;
+
+            this.setLocationDetails();
+            //return event;
+        },
+    },
+    created() {
+        this.setEventData();
     }
 }
 </script>

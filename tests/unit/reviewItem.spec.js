@@ -16,7 +16,7 @@ describe('reviewItem tests', () => {
         });
 
         let expected = testData.review;
-        let actual = wrapper.find('.review-text').text();
+        let actual = wrapper.find('.review-content-text').text();
        
         expect(actual).toBe(expected); 
     })
