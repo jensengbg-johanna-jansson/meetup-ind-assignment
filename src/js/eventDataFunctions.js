@@ -11,9 +11,12 @@ let getEvent = {
     },
     fromSearch(searchTerm) {
         let resultArray = [];
+        const lowerCaseSearchTerm = searchTerm.toLowerCase();
 
         for(let i = 0; i < events.length; i++) {
-            if(events[i].eventTitle.includes(searchTerm)) {
+            const lowerCaseTitle = events[i].eventTitle.toLowerCase();
+
+            if(lowerCaseTitle.includes(lowerCaseSearchTerm)) {
                 resultArray.push(events[i]);
             }
         }
