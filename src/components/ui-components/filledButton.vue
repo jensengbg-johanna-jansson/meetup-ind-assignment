@@ -1,10 +1,10 @@
 <template>
-    <button class="primary-button">{{ buttonText }}</button>
+    <button class="filled-button">{{ buttonText }}</button>
 </template>
 
 <script>
 export default {
-    name: 'primaryButton',
+    name: 'filledButton',
     props: {
         buttonText: String
     }
@@ -12,11 +12,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .primary-button {
+    .filled-button {
         border: none;
-        background: #fff;
+        @include gradient(-90deg);
         font-family: 'Roboto', sans-serif;
-        color: $pink;
+        color: #fff;
         text-transform: uppercase;
         font-weight: 300;
         font-size: 1.1rem;
