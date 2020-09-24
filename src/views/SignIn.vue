@@ -1,7 +1,7 @@
 <template>
     <section class="sign-in">
         <div class="sign-in-header">
-            <h1 class="sign-in-header-title">Sign Up</h1>
+            <h1 class="sign-in-header-title">Sign In</h1>
         </div>
         <svg viewBox="0 0 500 150" preserveAspectRatio="none">
             <path d="M0.00,49.98 C147.85,150.48 373.59,-64.63 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none;"></path>
