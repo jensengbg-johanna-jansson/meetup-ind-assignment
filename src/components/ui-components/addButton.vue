@@ -30,4 +30,7 @@ export default {
             color: $pink;
         }
     }
+    .add-button:focus {
+        outline: none;
+    }
 </style>

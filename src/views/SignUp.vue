@@ -43,7 +43,7 @@ export default {
             align-items: center;
             @include gradient(0deg);
             width: 100%;
-            padding: 2rem;
+            padding: 3rem 2rem;
             
             &-title {
                 color: #fff;

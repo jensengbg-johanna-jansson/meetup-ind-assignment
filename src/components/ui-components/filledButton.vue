@@ -24,4 +24,7 @@ export default {
         padding: .7rem 2rem;
         box-shadow: 0 0 4px rgba(0, 0, 0, .3);
     }
+    .filled-button:focus {
+        outline: none;
+    }
 </style>
