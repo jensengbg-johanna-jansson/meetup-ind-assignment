@@ -14,7 +14,7 @@
             <filledButton :buttonText="'sign up'" class="sign-up-form-button" />
         </form>
         <p>Already have an account?</p>
-        <primaryButton :buttonText="'sign in'" /> 
+        <primaryButton :buttonText="'sign in'" class="sign-up-sign-in-button" /> 
     </section>
 </template>
 
@@ -80,6 +80,9 @@ export default {
             &-button {
                 margin-top: 2rem;
             }
+        }
+        &-sign-in-button {
+            margin-top: 1rem;
         }
     }
 </style>
