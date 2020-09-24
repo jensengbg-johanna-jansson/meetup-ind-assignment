@@ -7,6 +7,7 @@
             <path d="M0.00,49.98 C147.85,150.48 373.59,-64.63 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none;"></path>
         </svg>
         <div class="sign-in-form">
+            <span class="sign-in-form-error"></span>
             <input type="text" 
                 name="email" 
                 id="email" 
@@ -45,12 +46,21 @@ export default {
     },
     methods: {
         login() {
-            console.log('hel');
             let payload = {
                 email: this.userEmail,
                 password: this.userPassword
             }
-            this.$store.dispatch('loginUser', payload);
+            this.$store.dispatch('loginUser', payload)
+            .then(() => {
+                let user = this.$store.state.user;
+                if(user.userId != null && user.token != '') {
+                    this.$router.push('/profile/' + user.userId);
+                } else {
+                    let errorElem = document.querySelector('.sign-in-form-error');
+
+                    errorElem.innerHTML = 'The email or password is incorrect.'
+                }
+            })
         }
     }
 }
@@ -110,6 +120,10 @@ export default {
             }
             &-button {
                 margin-top: 2rem;
+            }
+            &-error {
+                color: $error;
+                min-height: 1.5rem;
             }
         }
     }
