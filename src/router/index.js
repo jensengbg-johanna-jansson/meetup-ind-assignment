@@ -5,6 +5,8 @@ import Event from '../views/Event.vue'
 import Join from '../views/Join.vue'
 import SearchEvent from '../views/SearchEvent.vue'
 import Profile from '../views/Profile.vue'
+import SignUp from '../views/SignUp.vue'
+
 
 Vue.use(VueRouter)
 
@@ -33,6 +35,11 @@ const routes = [
     path: '/profile/:userId',
     name: 'Profile',
     component: Profile
+  },
+  {
+    path: '/signup',
+    name: 'SignUp',
+    component: SignUp
   }
 ]
 
