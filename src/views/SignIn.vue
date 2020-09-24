@@ -6,12 +6,26 @@
         <svg viewBox="0 0 500 150" preserveAspectRatio="none">
             <path d="M0.00,49.98 C147.85,150.48 373.59,-64.63 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none;"></path>
         </svg>
-        <form class="sign-in-form">
-            <input type="text" name="email" id="email" placeholder="Email">
-            <input type="password" name="password" id="password" placeholder="Password">
+        <div class="sign-in-form">
+            <input type="text" 
+                name="email" 
+                id="email" 
+                placeholder="Email"
+                v-model="userEmail"
+            >
+            <input type="password" 
+                name="password" 
+                id="password" 
+                placeholder="Password"
+                v-model="userPassword"
+            >
             <a href="" class="sign-in-form-forgot">Forgot your password?</a>
-            <filledButton :buttonText="'sign in'" class="sign-in-form-button" />
-        </form>
+            <filledButton 
+                :buttonText="'sign in'" 
+                class="sign-in-form-button" 
+                @click.native="login" 
+            />
+        </div>
     </section>
 </template>
 
@@ -22,6 +36,22 @@ export default {
     name: 'SignIn',
     components: {
         filledButton
+    },
+    data() {
+        return {
+            userEmail: '',
+            userPassword: ''
+        }
+    },
+    methods: {
+        login() {
+            console.log('hel');
+            let payload = {
+                email: this.userEmail,
+                password: this.userPassword
+            }
+            this.$store.dispatch('loginUser', payload);
+        }
     }
 }
 </script>
