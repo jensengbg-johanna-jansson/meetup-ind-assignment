@@ -1,5 +1,6 @@
 const data = require('../assets/database.json');
 const users = data.users;
+const events = data.events;
 
 let getUser = {
     createToken(userEmail) {
@@ -40,6 +41,21 @@ let getUser = {
         }
 
         return response;
+    },
+    byId(id) {
+        const user = users.find( ({ userId }) => userId === parseInt(id) );
+        const userEventsArray = user.events;
+        let fullEventsList = [];
+        let userWithEvents = user; 
+
+        for(let i = 0; i < userEventsArray.length; i++) {
+            const event = events.find( ({ eventId }) => eventId === parseInt(userEventsArray[i]) ); 
+            fullEventsList.push(event);
+        }
+
+        userWithEvents.events = fullEventsList;
+
+        return userWithEvents;
     }
 }
 
