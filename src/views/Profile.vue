@@ -2,14 +2,15 @@
     <section class="profile">
         <div class="profile-info">
             <span class="profile-info-img"><i class="fas fa-user-circle"></i></span>
-            <p class="profile-info-name">Sarah Williams</p>
-            <p class="profile-info-email">sarah.williams@gmail.com</p>
+            <p class="profile-info-name">{{ userData.name }}</p>
+            <p class="profile-info-email">{{ userData.email }}</p>
         </div>
         <svg viewBox="0 0 500 150" preserveAspectRatio="none">
             <path d="M0.00,49.98 C147.85,150.48 373.59,-64.63 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none;"></path>
         </svg>
         <article class="profile-attend">
             <h2 class="profile-heading">Meetups I'm attending</h2>
+            <eventList :eventsList="userData.events" />
         </article>
         <article class="profile-past">
             <h2 class="profile-heading">Past meetups</h2>
@@ -18,11 +19,20 @@
 </template>
 
 <script>
+import getUser from '@/js/userDataFunctions.js';
+import eventList from '@/components/eventList.vue'
+
 export default {
     name: 'Profile',
+    components: {
+        eventList
+    },
     computed: {
         userData() {
-            return { userId: this.$route.params.userId };
+            const userId = this.$route.params.userId;
+            const user = getUser.byId(userId);
+            console.log(user);
+            return user;
         }
     }
 }
@@ -71,6 +81,7 @@ export default {
         }
         &-heading {
             color: $pink;
+            margin-bottom: 1rem;
         }
         svg {
             height: 3rem; 

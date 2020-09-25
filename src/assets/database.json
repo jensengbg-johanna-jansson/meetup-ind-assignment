@@ -41,7 +41,7 @@
             "name": "Sarah Williams",
             "email": "sarah.williams@gmail.com",
             "password": "12345678",
-            "events": []
+            "events": [1]
         }
     ],
     "reviews": [
