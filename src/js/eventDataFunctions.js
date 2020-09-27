@@ -1,9 +1,8 @@
-const data = require('../assets/database.json');
-const events = data.events;
-const reviews = data.reviews;
-
+import store from '../store'
 let getEvent = {
-    findReviews(reviewsArray) {
+    findReviews(data, reviewsArray) {
+        const reviews = data.reviews;
+
         let reviewsData = [];
 
         for(let i = 0; i < reviewsArray.length; i++) {
@@ -16,21 +15,30 @@ let getEvent = {
         return reviewsData;
     },
     byId(id) {
+        const data = store.state.data;
+        const events = data.events;
         const eventIdToInt = parseInt(id);
         const eventItem = events.find( ({ eventId }) => eventId === eventIdToInt );
-        const reviewsData = this.findReviews(eventItem.reviews);
+        const reviewsData = this.findReviews(data, eventItem.reviews);
         let newEventItem = eventItem;
 
         newEventItem.reviews = reviewsData;
 
         return newEventItem;
     },
-    all() {
+    all() {       
+        const data = store.state.data;
+        const events = data.events;
+
         return events;
     },
     fromSearch(searchTerm) {
+        const data = store.state.data;
+        const events = data.events;
         let resultArray = [];
         const lowerCaseSearchTerm = searchTerm.toLowerCase();
+
+        console.log(events);
 
         for(let i = 0; i < events.length; i++) {
             const lowerCaseTitle = events[i].eventTitle.toLowerCase();

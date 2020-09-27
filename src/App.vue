@@ -10,6 +10,9 @@
   export default { 
     components: {
       mainNav
+    },
+    created() {
+      this.$store.dispatch('getData');
     }
   }
 </script>

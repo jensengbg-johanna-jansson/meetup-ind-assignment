@@ -64,14 +64,13 @@ export default {
                 locationNotes: this.eventData.locationNotes
             }
         },
-        async setEventData() {
+        setEventData() {
             let eventId = this.$route.params.eventId;
-            const event = await getEvent.byId(eventId);
+            let event = getEvent.byId(eventId);
             console.log(event);
             this.eventData = event;
 
             this.setLocationDetails();
-            //return event;
         },
     },
     created() {

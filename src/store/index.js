@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import getUser from '@/js/userDataFunctions.js';
+import axios from "axios"
+import getUser from '@/js/userDataFunctions.js'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    data: '',
     user: {
       userId: null,
       token: '',
@@ -15,6 +17,9 @@ export default new Vuex.Store({
     setUser(state, payload) {
       state.user.userId = payload.userId;
       state.user.token = payload.token;
+    },
+    setData(state, payload) {
+      state.data = payload;
     }
   },
   actions: {
@@ -24,6 +29,19 @@ export default new Vuex.Store({
       if(res.success) {
         context.commit('setUser', res.user);
       }
+    },
+    getData(context) {
+      const getUrl = 'https://api.jsonbin.io/b/5f6dedf2302a837e956d798a'; // request URL
+        const token = '$2b$10$yK7Wd8VYpPBMMgz591x2WeUPqba/X66/n0vsSS7AQsXM90RmkyS.a'; // access token
+        
+            axios.get(getUrl, {
+               headers: {
+                  "secret-key": token,
+               },
+            }).then(res => {
+              console.log(res.data);
+              context.commit('setData', res.data);
+            })
     }
   },
   modules: {
