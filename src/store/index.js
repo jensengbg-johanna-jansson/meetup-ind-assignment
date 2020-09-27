@@ -2,11 +2,13 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from "axios"
 import getUser from '@/js/userDataFunctions.js'
+import apiEnum from '@/js/apiEnum.js';
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    apiState: apiEnum.INIT,
     data: '',
     user: {
       userId: null,
@@ -20,6 +22,7 @@ export default new Vuex.Store({
     },
     setData(state, payload) {
       state.data = payload;
+      state.apiState = apiEnum.LOADED;
     }
   },
   actions: {
