@@ -1,6 +1,14 @@
 import { shallowMount } from '@vue/test-utils';
 import Profile from '@/views/Profile.vue';
 
+const mockUser = {
+    "userId": 1,
+    "name": "Sarah Williams",
+    "email": "sarah.williams@gmail.com",
+    "password": "12345678",
+    "events": []
+}
+
 describe('Profile page tests', () => {
     it('should extract userId from the URL', () => {
         const testId = 1;
@@ -10,6 +18,11 @@ describe('Profile page tests', () => {
                     params: {
                         userId: testId
                     }
+                }
+            },
+            computed: {
+                userData() {
+                  return mockUser
                 }
             }
         });
