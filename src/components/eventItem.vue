@@ -16,11 +16,14 @@
 export default {
     name: 'eventItem',
     props: {
-        eventItem: Object
+        eventItem: Object,
+        disabled: Boolean
     },
     methods: {
         openEvent() {            
-            this.$router.push('/event/' + this.eventItem.eventId);
+            if(!this.disabled) {
+                this.$router.push('/event/' + this.eventItem.eventId);
+            }
         }
     }
 }
