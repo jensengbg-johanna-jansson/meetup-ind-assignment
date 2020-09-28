@@ -1,4 +1,4 @@
-import { shallowMount, mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import VueRouter from 'vue-router';
 import Event from '@/views/Event.vue';
 
@@ -35,7 +35,7 @@ describe('Event page tests', () => {
             push: jest.fn()
         }
        
-        let wrapper = mount(Event, {
+        let wrapper = shallowMount(Event, {
             mocks: {
                 $router,
                 $route: {
@@ -43,9 +43,12 @@ describe('Event page tests', () => {
                         eventId: testId
                     }
                 },
+            },
+            methods: {
+                setEventData: () => {}
             }
         });
-        
+
         await wrapper.find('.event-info-join-button').trigger('click');          
         
         expect($router.push).toHaveBeenCalledWith(route); 

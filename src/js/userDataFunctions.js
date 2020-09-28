@@ -1,6 +1,9 @@
+import store from '../store'
+/*
 const data = require('../assets/database.json');
 const users = data.users;
 const events = data.events;
+*/
 
 let getUser = {
     createToken(userEmail) {
@@ -16,7 +19,8 @@ let getUser = {
         }
     },
     findUser(userEmail) {
-        const user = users.find( ({ email }) => email === userEmail );
+        const data = store.state.data;
+        const user = data.users.find( ({ email }) => email === userEmail );
         return user;
     },
     AUTH_LOGIN(email, password) {
@@ -43,7 +47,9 @@ let getUser = {
         return response;
     },
     byId(id) {
-        const user = users.find( ({ userId }) => userId === parseInt(id) );
+        const data = store.state.data;
+        const events = data.events;
+        const user = data.users.find( ({ userId }) => userId === parseInt(id) );
         const userEventsArray = user.events;
         let fullEventsList = [];
         let userWithEvents = user; 

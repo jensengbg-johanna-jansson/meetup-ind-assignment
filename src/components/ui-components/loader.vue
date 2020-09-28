@@ -1,10 +1,13 @@
 <template>
-  <div class="home">
-  </div>
+    <h1>Loading</h1>
 </template>
 
 <script>
 export default {
-  name: 'Home',
+    name: 'loader'
 }
 </script>
+
+<style>
+
+</style>
