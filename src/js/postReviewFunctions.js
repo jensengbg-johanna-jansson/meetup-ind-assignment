@@ -1,4 +1,5 @@
-import axios from "axios"
+import axios from "axios";
+import store from '../store';
 
 let postReview = {
     createReviewId(reviewList) {
@@ -23,11 +24,11 @@ let postReview = {
         }
     },
     post(review) {
-        const getUrl = 'https://api.jsonbin.io/b/5f6dedf2302a837e956d798a'; // request URL
-        const token = '$2b$10$yK7Wd8VYpPBMMgz591x2WeUPqba/X66/n0vsSS7AQsXM90RmkyS.a'; // access token
+        const getUrl = 'https://api.jsonbin.io/b/5f6dedf2302a837e956d798a';
+        const token = '$2b$10$yK7Wd8VYpPBMMgz591x2WeUPqba/X66/n0vsSS7AQsXM90RmkyS.a';
         let data;
-
-        axios.get(getUrl, {
+        
+        return axios.get(getUrl, {
             headers: {
                 "secret-key": token,
             },
@@ -48,9 +49,23 @@ let postReview = {
     
             newDataObject.events[eventToUpdate].reviews.push(reviewId);
             newDataObject.reviews.push(newReview);
-    
-            console.log(newDataObject);    
+            
+            return axios.put(getUrl, newDataObject, {
+                headers: {
+                    "secret-key": token,
+                },
+            })
         })
+        .then(req => {
+            console.log(req);
+            if(req.data.success) {
+                store.dispatch('getData');
+                return { success: true }
+            } else {
+                return { success: false }
+            }
+        })
+        .catch(error => console.log(error))
     }
 }
 

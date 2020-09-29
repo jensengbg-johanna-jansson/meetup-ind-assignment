@@ -60,7 +60,7 @@ export default {
         setRating(value) {
             this.rating = parseInt(value);
         },
-        addReview() {
+        async addReview() {
             if(this.rating === null) {
                 this.errorMsg = 'Please select a rating';
             } else if(this.reviewInput === '') {
@@ -73,8 +73,16 @@ export default {
                     eventId: this.$route.params.eventId
                 }
 
-                this.errorMsg = 'Thank you';
-                postReview.post(reviewObject);
+                postReview.post(reviewObject)               
+                .then((res) => {
+                    console.log(res);
+
+                    if(res.success) {
+                        this.errorMsg = 'Review was added';
+                    } else {
+                        this.errorMsg = 'Error: Could not add review';
+                    }                
+                });
             }
         }
     },
