@@ -24,7 +24,7 @@ let postReview = {
         }
     },
     post(review) {
-        const getUrl = 'https://api.jsonbin.io/b/5f6dedf2302a837e956d798a';
+        const getUrl = 'https://api.jsonbin.io/b/5f733b1d65b18913fc5624cb';
         const token = '$2b$10$yK7Wd8VYpPBMMgz591x2WeUPqba/X66/n0vsSS7AQsXM90RmkyS.a';
         let data;
         
@@ -53,7 +53,7 @@ let postReview = {
             return axios.put(getUrl, newDataObject, {
                 headers: {
                     "secret-key": token,
-                    //"versioning": false
+                    "versioning": false
                 },
             })
         })
