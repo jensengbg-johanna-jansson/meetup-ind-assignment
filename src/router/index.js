@@ -8,7 +8,7 @@ import Profile from '../views/Profile.vue'
 import SignUp from '../views/SignUp.vue'
 import SignIn from '../views/SignIn.vue'
 import NewReview from '../views/NewReview.vue'
-
+import getUser from '../js/userDataFunctions.js'
 
 Vue.use(VueRouter)
 
@@ -41,7 +41,12 @@ const routes = [
   {
     path: '/profile/:userId',
     name: 'Profile',
-    component: Profile
+    component: Profile,
+    beforeEnter: (to, from, next) => {
+      const isAuthenticated = getUser.IS_AUTH();
+      if(!isAuthenticated) next({ name: 'SignIn' })
+      else next()
+    }
   },
   {
     path: '/signup',

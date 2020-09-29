@@ -3,7 +3,16 @@
         <div class="menu">
             <button @click="toggleNav" class="menu-button"><i class="fas fa-bars"></i></button>
             <h1 class="menu-logo">MiitoAppu</h1>
-            <button class="menu-user"><i class="fas fa-user-circle"></i></button>
+            <button v-if="isLoggedIn" 
+                class="menu-user" 
+                @click="goToProfile">
+                <i class="fas fa-user-circle"></i>
+            </button>
+            <button v-else 
+                class="menu-user" 
+                @click="goToSignIn">
+                <i class="fas fa-sign-in-alt"></i>
+            </button>
         </div>
         <span class="spacer"></span>
         <nav v-if="showNav" class="menu-nav">
@@ -21,7 +30,7 @@ export default {
     name: 'mainNav',
     data() {
         return {
-            showNav: false
+            showNav: false,
         }
     },
     methods: {
@@ -30,6 +39,24 @@ export default {
         },
         onUrlChange() {
             this.showNav = false;
+        },
+        goToProfile() {
+            let userId = this.$store.state.user.userId;
+            this.$router.push('/profile/' + userId);
+        },
+        goToSignIn() {
+            this.$router.push('/signin');
+        }
+    },
+    computed: {
+        isLoggedIn() {
+            let userId = this.$store.state.user.userId;
+
+            if(userId != null) {
+                return true;
+            } else {
+                return false;
+            }
         }
     },
     watch: {
@@ -62,6 +89,9 @@ export default {
             border: none;
             font-size: 2.5rem;
             color: #fff;
+        }
+        button:focus {
+            outline: none;
         }
         &-logo {
             font-size: 1.5rem;

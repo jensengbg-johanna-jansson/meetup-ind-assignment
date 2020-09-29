@@ -25,8 +25,11 @@
       },
     },
     created() {
-      this.$store.dispatch('getData');
-    }
+      this.$store.dispatch('getData')
+      .then(() => {
+        this.$store.dispatch('isLoggedIn')
+      })
+    },
   }
 </script>
 

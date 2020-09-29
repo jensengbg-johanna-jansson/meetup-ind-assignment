@@ -60,7 +60,9 @@ let postReview = {
         .then(req => {
             console.log(req);
             if(req.data.success) {
+                let userId = store.state.user.userId;
                 store.dispatch('getData');
+                store.dispatch('updateUserData', userId);
                 return { success: true }
             } else {
                 return { success: false }
