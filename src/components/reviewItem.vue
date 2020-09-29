@@ -3,7 +3,7 @@
         <div class="review-content">
             <span class="review-content-user-img"><i class="fas fa-user-circle"></i></span>
             <p class="review-content-user-name">Sarah Williams</p>
-            <rating :rating="2" class="review-content-rating" />
+            <rating :rating="reviewItem.rating" class="review-content-rating" />
             <p class="review-content-text">{{ reviewItem.review }}</p>
         </div>
     </article>
