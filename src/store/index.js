@@ -11,8 +11,13 @@ export default new Vuex.Store({
     apiState: apiEnum.INIT,
     data: '',
     user: {
-      userId: null,
+      userId: 1,
       token: '',
+      userData: {
+        name: "Sarah Williams",
+        email: "sarah.williams@gmail.com",
+        events: [1, 4, 5, 6]
+      }
     }
   },
   mutations: {

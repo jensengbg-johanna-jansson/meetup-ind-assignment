@@ -69,7 +69,7 @@ export default {
                 let reviewObject = {
                     rating: this.rating, 
                     review: this.reviewInput,
-                    userId: 1,
+                    userId: this.$store.state.user.userId,
                     eventId: this.$route.params.eventId
                 }
 
@@ -148,6 +148,12 @@ export default {
                 display: flex;
                 opacity: .6;
             }
+        }
+        &-error {
+            @include centeredFlex();
+            min-height: 1.5rem;
+            color: $error;
+
         }
         &-submit-button {
             align-self: center;
