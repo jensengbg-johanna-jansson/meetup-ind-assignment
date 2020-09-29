@@ -1,7 +1,7 @@
 <template>
     <div class="rating">
-        <i class="fas fa-star rated" v-for="n in rating" :key="n"></i>
-        <i class="fas fa-star" v-for="n in unRated" :key="n"></i>
+        <i class="fas fa-star rated" v-for="n in rating" :key="'filled' + n"></i>
+        <i class="fas fa-star" v-for="n in unRated" :key="'unfilled' + n"></i>
     </div>
 </template>
 
