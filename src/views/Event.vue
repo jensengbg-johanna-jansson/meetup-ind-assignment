@@ -25,7 +25,7 @@
 
             <locationDetails :detailsData="locationDetailsData" />
         </article>
-        <reviewList :reviewData="eventData.reviews" />
+        <review :reviews="eventData.reviews" />
     </section>
 </template>
 
@@ -33,14 +33,14 @@
 import locationDetails from '@/components/locationDetails.vue';
 import addButton from '@/components/ui-components/addButton.vue';
 import getEvent from '@/js/eventDataFunctions.js';
-import reviewList from '@/components/reviewList.vue';
+import review from '@/components/review.vue';
 
 export default {
     name: 'Event',
     components: {
         locationDetails,
         addButton,
-        reviewList
+        review
     },
     data() {
         return {

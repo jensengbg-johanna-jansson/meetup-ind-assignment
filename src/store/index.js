@@ -11,8 +11,13 @@ export default new Vuex.Store({
     apiState: apiEnum.INIT,
     data: '',
     user: {
-      userId: null,
+      userId: 1,
       token: '',
+      userData: {
+        name: "Sarah Williams",
+        email: "sarah.williams@gmail.com",
+        events: [1, 4, 5, 6]
+      }
     }
   },
   mutations: {
@@ -34,17 +39,16 @@ export default new Vuex.Store({
       }
     },
     getData(context) {
-      const getUrl = 'https://api.jsonbin.io/b/5f6dedf2302a837e956d798a'; // request URL
-        const token = '$2b$10$yK7Wd8VYpPBMMgz591x2WeUPqba/X66/n0vsSS7AQsXM90RmkyS.a'; // access token
-        
-            axios.get(getUrl, {
-               headers: {
-                  "secret-key": token,
-               },
-            }).then(res => {
-              console.log(res.data);
-              context.commit('setData', res.data);
-            })
+      const getUrl = 'https://api.jsonbin.io/b/5f733b1d65b18913fc5624cb';
+      const token = '$2b$10$yK7Wd8VYpPBMMgz591x2WeUPqba/X66/n0vsSS7AQsXM90RmkyS.a';
+      
+      axios.get(getUrl, {
+          headers: {
+            "secret-key": token,
+          },
+      }).then(res => {
+        context.commit('setData', res.data);
+      })
     }
   },
   modules: {
