@@ -5,7 +5,7 @@
         <p class="join-event">Hanami</p>
         <p class="join-message">Remember to check the event details before going to the event. You can find all events you are joining on your profile page.</p>
 
-        <primaryButton :buttonText="'check profile'" />
+        <primaryButton @click.native="goToProfile" :buttonText="'check profile'" />
     </section>
 </template>
 
@@ -15,6 +15,12 @@ export default {
     name: 'Join',
     components: {
         primaryButton
+    },
+    methods: {
+        goToProfile() {
+            let userId = this.$store.state.user.userId;
+            this.$router.push('/profile/' + userId);
+        }
     }
 }
 </script>

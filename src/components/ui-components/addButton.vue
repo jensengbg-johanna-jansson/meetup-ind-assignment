@@ -9,8 +9,19 @@
 export default {
     name: 'addButton',
     props: {
-        hasJoined: Boolean,
         hasEnded: Boolean
+    },
+    computed: {
+        hasJoined() {
+            let eventId = parseInt(this.$route.params.eventId);
+            let eventList = this.$store.state.user.userData.events;
+
+            if(eventList.includes(eventId)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 }
 </script>
@@ -28,6 +39,16 @@ export default {
         .button-icon {
             font-size: 1.5rem;
             color: $pink;
+        }
+    }
+    .add-button:focus {
+        outline: none;
+    }
+    .add-button:disabled {
+        background: #c7c7c7;
+        
+        .button-icon {
+            color: #888;
         }
     }
 </style>

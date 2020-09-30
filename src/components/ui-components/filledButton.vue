@@ -1,10 +1,10 @@
 <template>
-    <button class="primary-button">{{ buttonText }}</button>
+    <button class="filled-button">{{ buttonText }}</button>
 </template>
 
 <script>
 export default {
-    name: 'primaryButton',
+    name: 'filledButton',
     props: {
         buttonText: String
     }
@@ -12,19 +12,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .primary-button {
-        border: 1px solid $pink;
-        background: #fff;
+    .filled-button {
+        border: none;
+        @include gradient(-90deg);
         font-family: 'Roboto', sans-serif;
-        color: $pink;
+        color: #fff;
         text-transform: uppercase;
         font-weight: 300;
         font-size: 1.1rem;
         border-radius: 5rem;
         padding: .7rem 2rem;
-        box-shadow: 0 0 2px rgba(0, 0, 0, .2);
+        box-shadow: 0 0 4px rgba(0, 0, 0, .3);
     }
-    .primary-button:focus {
+    .filled-button:focus {
         outline: none;
     }
 </style>

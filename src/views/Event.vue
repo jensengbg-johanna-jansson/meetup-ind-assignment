@@ -1,7 +1,7 @@
 <template>
     <section class="event">
         <article class="event-info">
-            <p class="event-info-date">{{ eventData.date }}, {{ eventData.startTime }} - {{ eventData.endTime }}</p>
+            <p class="event-info-date">{{ dateText }}, {{ eventData.startTime }} - {{ eventData.endTime }}</p>
             <h1 class="event-info-title">{{ eventData.eventTitle }}</h1>
             <p class="event-info-place">@{{ eventData.locationPlace }}</p>
 
@@ -10,8 +10,7 @@
 
             <addButton 
                 class="event-info-join-button" 
-                :hasJoined="false" 
-                :hasEnded="false" 
+                :hasEnded="hasEnded" 
                 @click.native="addUserToEvent"
             />
         </article>
@@ -25,6 +24,7 @@
 
             <locationDetails :detailsData="locationDetailsData" />
         </article>
+        <review :reviews="eventData.reviews" />
     </section>
 </template>
 
@@ -32,55 +32,95 @@
 import locationDetails from '@/components/locationDetails.vue';
 import addButton from '@/components/ui-components/addButton.vue';
 import getEvent from '@/js/eventDataFunctions.js';
+import getUser from '@/js/userDataFunctions.js';
+import review from '@/components/review.vue';
 
 export default {
     name: 'Event',
     components: {
         locationDetails,
-        addButton
+        addButton,
+        review
     },
     data() {
         return {
-            /*
-            eventData: {
-                eventTitle: 'Hanami',
-                startTime: '12:00',
-                endTime: '15:30',
-                date: 'September 12',
-                host: 'Göteborgs Botaniska Trädgård',
-                locationPlace: 'Botaniska Trädgården',
-                locationStreet: 'Carl Skottsbergs Gata 22A',
-                locationZip: '413 19',
-                locationCity: 'Gothenburg',
-                locationNotes: 'Vi samlas vid huvudentrén för att sedan röra oss mot japandalen',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit id diam ut venenatis. Maecenas commodo sapien dapibus orci volutpat, vel maximus tellus convallis. Sed hendrerit, nunc eu pharetra finibus, ligula lacus vulputate arcu, ac lobortis est nisl sed risus.<br>Nunc vel velit posuere, vehicula sapien sit amet, facilisis nisi. Duis erat neque, ornare at cursus sit amet, varius ut augue. Vestibulum dapibus lorem dui, at imperdiet sapien maximus sit amet.',
-                reviews: []
-            }
-            */
+            eventData: '',
+            locationDetailsData: ''
         }
     },
     methods: {
         addUserToEvent() {
-            this.$router.push('/event/1/join');
-        }
-    },
-    computed: {
-        eventData() {
             let eventId = this.$route.params.eventId;
-            return getEvent.byId(eventId);
+
+            getUser.addEvent(eventId)
+            .then(res => {
+                console.log('hejsan!!!!');
+
+                if(res.success === true) {
+                    this.$router.push('/event/' + eventId + '/join');
+                } else {
+                    console.log('Error: Could not add event to user');
+                }
+            })
         },
-        locationDetailsData() {
-            return {
+        setLocationDetails() {
+            this.locationDetailsData = {
                 startTime: this.eventData.startTime,
                 endTime: this.eventData.endTime,
-                date: this.eventData.date,
+                date: this.dateText,
                 locationPlace: this.eventData.locationPlace,
                 locationStreet: this.eventData.locationStreet,
                 locationZip: this.eventData.locationZip,
                 locationCity: this.eventData.locationCity,
                 locationNotes: this.eventData.locationNotes
             }
+        },
+        setEventData() {
+            let eventId = this.$route.params.eventId;
+            let event = getEvent.byId(eventId);
+            
+            this.eventData = event;
+
+            this.setLocationDetails();
+        },
+    },
+    computed: {
+        hasEnded() {
+            const currentDate = Date.now();
+            const eventDate = Date.parse(this.eventData.date);
+            const timeDiff = currentDate-eventDate;
+
+            if(timeDiff <= 0) {
+                return false;
+            } else {
+                return true;
+            }
+        },
+        dateText() {
+            const monthArray = ['January', 'Februari', 'Mars', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            const date = new Date(this.eventData.date);
+            const month = monthArray[date.getMonth()];           
+            const day = date.getDate();
+            const year = date.getFullYear();
+            let dayWithOrdinal;
+
+            if(day == '1' || day == '21' || day == '31') {
+                dayWithOrdinal = day + 'st';
+            } else if(day == '2' || day == '22') {
+                dayWithOrdinal = day + 'nd';
+            } else if(day == '3' || day == '23') {
+                dayWithOrdinal = day + 'rd';
+            } else {
+                dayWithOrdinal = day + 'th';
+            }
+
+            const fullDate = dayWithOrdinal + ' ' + month + ', ' + year;
+            
+            return fullDate;
         }
+    },
+    created() {
+        this.setEventData();
     }
 }
 </script>
