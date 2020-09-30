@@ -2,8 +2,8 @@
     <article class="event-item" @click="openEvent">
         <div class="event-item-date">
             <span class="event-item-date-container">
-                <p class="month">Sep</p>
-                <p class="day">14</p>
+                <p class="month">{{ dateMonth }}</p>
+                <p class="day">{{ dateDay }}</p>
             </span>
         </div>
         <p class="event-item-time">{{ eventItem.startTime }} - {{ eventItem.endTime }}</p>
@@ -24,6 +24,21 @@ export default {
             if(!this.disabled) {
                 this.$router.push('/event/' + this.eventItem.eventId);
             }
+        }
+    },
+    computed: {
+        dateMonth() {
+            let monthArray = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+            const date = new Date(this.eventItem.date);
+            const month = monthArray[date.getMonth()];
+            
+            return month;
+        },
+        dateDay() {
+            const date = new Date(this.eventItem.date);
+            const day = date.getDate();
+
+            return day;
         }
     }
 }
@@ -47,6 +62,9 @@ export default {
             margin-right: 1rem;
             border-radius: .3rem;
             @include gradient(0deg);
+            display: flex;
+            max-height: 5rem;
+            align-self: center;
 
             &-container {
                 @include centeredFlex();
