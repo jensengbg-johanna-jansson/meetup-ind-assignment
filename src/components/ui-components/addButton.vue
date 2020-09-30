@@ -14,10 +14,15 @@ export default {
     computed: {
         hasJoined() {
             let eventId = parseInt(this.$route.params.eventId);
-            let eventList = this.$store.state.user.userData.events;
+            let user = this.$store.state.user;
+            if(user.userId != null) {
+                let eventList = user.userData.events;
 
-            if(eventList.includes(eventId)) {
-                return true;
+                if(eventList.includes(eventId)) {
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
                 return false;
             }

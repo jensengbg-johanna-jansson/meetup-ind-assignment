@@ -8,6 +8,11 @@
                 class="review-list-wrapper-item"
             />
         </div>
+        <div class="review-list-pages">
+            <span class="review-list-pages-page"
+                v-for="review in reviewData" :key="review.reviewId"
+            ></span>
+        </div>
     </div>
 </template>
 
@@ -39,6 +44,22 @@ export default {
             &-item {
                 flex: 0 0 auto;
                 margin-right: 1rem;
+            }
+        }
+        &-pages {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 1rem;
+
+            &-page {
+                display: block;
+                width: 1rem;
+                height: 1rem;
+                background: $pink;
+                border-radius: 1rem;
+                margin: 0 .2rem;
+                opacity: .5;
             }
         }
     }

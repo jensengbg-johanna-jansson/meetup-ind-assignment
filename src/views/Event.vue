@@ -49,19 +49,33 @@ export default {
         }
     },
     methods: {
+        isLoggedIn() {
+            let user = this.$store.state.user;
+
+            if(user.userId != null) {
+                return true;
+            } else {
+                return false;
+            }
+        },
         addUserToEvent() {
-            let eventId = this.$route.params.eventId;
+            const isLoggedIn = this.isLoggedIn();
+            if(isLoggedIn) {           
+                let eventId = this.$route.params.eventId;
 
-            getUser.addEvent(eventId)
-            .then(res => {
-                console.log('hejsan!!!!');
+                getUser.addEvent(eventId)
+                .then(res => {
+                    console.log('hejsan!!!!');
 
-                if(res.success === true) {
-                    this.$router.push('/event/' + eventId + '/join');
-                } else {
-                    console.log('Error: Could not add event to user');
-                }
-            })
+                    if(res.success === true) {
+                        this.$router.push('/event/' + eventId + '/join');
+                    } else {
+                        console.log('Error: Could not add event to user');
+                    }
+                })
+            } else {
+                this.$router.push('/signin');
+            }
         },
         setLocationDetails() {
             this.locationDetailsData = {
