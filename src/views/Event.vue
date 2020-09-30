@@ -1,7 +1,7 @@
 <template>
     <section class="event">
         <article class="event-info">
-            <p class="event-info-date">{{ eventData.date }}, {{ eventData.startTime }} - {{ eventData.endTime }}</p>
+            <p class="event-info-date">{{ dateText }}, {{ eventData.startTime }} - {{ eventData.endTime }}</p>
             <h1 class="event-info-title">{{ eventData.eventTitle }}</h1>
             <p class="event-info-place">@{{ eventData.locationPlace }}</p>
 
@@ -66,7 +66,7 @@ export default {
             this.locationDetailsData = {
                 startTime: this.eventData.startTime,
                 endTime: this.eventData.endTime,
-                date: this.eventData.date,
+                date: this.dateText,
                 locationPlace: this.eventData.locationPlace,
                 locationStreet: this.eventData.locationStreet,
                 locationZip: this.eventData.locationZip,
@@ -94,6 +94,28 @@ export default {
             } else {
                 return true;
             }
+        },
+        dateText() {
+            const monthArray = ['January', 'Februari', 'Mars', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            const date = new Date(this.eventData.date);
+            const month = monthArray[date.getMonth()];           
+            const day = date.getDate();
+            const year = date.getFullYear();
+            let dayWithOrdinal;
+
+            if(day == '1' || day == '21' || day == '31') {
+                dayWithOrdinal = day + 'st';
+            } else if(day == '2' || day == '22') {
+                dayWithOrdinal = day + 'nd';
+            } else if(day == '3' || day == '23') {
+                dayWithOrdinal = day + 'rd';
+            } else {
+                dayWithOrdinal = day + 'th';
+            }
+
+            const fullDate = dayWithOrdinal + ' ' + month + ', ' + year;
+            
+            return fullDate;
         }
     },
     created() {
