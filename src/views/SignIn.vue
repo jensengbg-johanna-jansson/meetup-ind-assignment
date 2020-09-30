@@ -28,7 +28,7 @@
             />
         </div>
         <p class="sign-in-sign-up-text">Don't have an account?</p>
-        <primaryButton :buttonText="'sign up'" class="sign-in-sign-up-button" /> 
+        <primaryButton @click.native="goToSignUp" :buttonText="'sign up'" class="sign-in-sign-up-button" /> 
     </section>
 </template>
 
@@ -65,6 +65,9 @@ export default {
                     errorElem.innerHTML = 'The email or password is incorrect.'
                 }
             })
+        },
+        goToSignUp() {
+            this.$router.push('/signup');
         }
     }
 }
