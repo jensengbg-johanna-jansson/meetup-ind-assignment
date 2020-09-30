@@ -27,16 +27,20 @@
                 @click.native="login" 
             />
         </div>
+        <p class="sign-in-sign-up-text">Don't have an account?</p>
+        <primaryButton @click.native="goToSignUp" :buttonText="'sign up'" class="sign-in-sign-up-button" /> 
     </section>
 </template>
 
 <script>
 import filledButton from '@/components/ui-components/filledButton.vue';
+import primaryButton from '@/components/ui-components/primaryButton.vue';
 
 export default {
     name: 'SignIn',
     components: {
-        filledButton
+        filledButton,
+        primaryButton
     },
     data() {
         return {
@@ -53,7 +57,7 @@ export default {
             this.$store.dispatch('loginUser', payload)
             .then(() => {
                 let user = this.$store.state.user;
-                if(user.userId != null && user.token != '') {
+                if(user.userId != null && user.token != null) {
                     this.$router.push('/profile/' + user.userId);
                 } else {
                     let errorElem = document.querySelector('.sign-in-form-error');
@@ -61,6 +65,9 @@ export default {
                     errorElem.innerHTML = 'The email or password is incorrect.'
                 }
             })
+        },
+        goToSignUp() {
+            this.$router.push('/signup');
         }
     }
 }
@@ -125,6 +132,9 @@ export default {
                 color: $error;
                 min-height: 1.5rem;
             }
+        }
+        &-sign-up-button {
+            margin-top: 1rem;
         }
     }
 </style>

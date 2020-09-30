@@ -30,7 +30,8 @@ export default {
     computed: {
         userData() {
             const userId = this.$route.params.userId;
-            const user = getUser.byId(userId);
+            const user = getUser.byId(userId, true);
+            console.log('Profile user: ');
             console.log(user);
             return user;
         }

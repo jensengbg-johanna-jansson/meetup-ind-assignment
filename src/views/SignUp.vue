@@ -13,19 +13,15 @@
             <input type="password" name="password2" id="password2" placeholder="Password Again">
             <filledButton :buttonText="'sign up'" class="sign-up-form-button" />
         </form>
-        <p>Already have an account?</p>
-        <primaryButton :buttonText="'sign in'" class="sign-up-sign-in-button" /> 
     </section>
 </template>
 
 <script>
-import primaryButton from '@/components/ui-components/primaryButton.vue';
 import filledButton from '@/components/ui-components/filledButton.vue';
 
 export default {
     name: 'SignUp',
     components: {
-        primaryButton,
         filledButton
     }
 }
@@ -80,9 +76,6 @@ export default {
             &-button {
                 margin-top: 2rem;
             }
-        }
-        &-sign-in-button {
-            margin-top: 1rem;
         }
     }
 </style>

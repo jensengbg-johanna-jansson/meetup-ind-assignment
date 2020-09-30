@@ -8,7 +8,8 @@ import Profile from '../views/Profile.vue'
 import SignUp from '../views/SignUp.vue'
 import SignIn from '../views/SignIn.vue'
 import NewReview from '../views/NewReview.vue'
-
+import page404 from '../views/404.vue'
+import getUser from '../js/userDataFunctions.js'
 
 Vue.use(VueRouter)
 
@@ -41,17 +42,37 @@ const routes = [
   {
     path: '/profile/:userId',
     name: 'Profile',
-    component: Profile
+    component: Profile,
+    beforeEnter: (to, from, next) => {
+      const isAuthenticated = getUser.IS_AUTH();
+      if(!isAuthenticated) next({ name: 'SignIn' })
+      else next()
+    }
   },
   {
     path: '/signup',
     name: 'SignUp',
-    component: SignUp
+    component: SignUp,
+    beforeEnter: (to, from, next) => {
+      const isAuthenticated = getUser.IS_AUTH();
+      if(isAuthenticated) next({ name: '404' })
+      else next()
+    }
   },
   {
     path: '/signin',
     name: 'SignIn',
-    component: SignIn
+    component: SignIn,
+    beforeEnter: (to, from, next) => {
+      const isAuthenticated = getUser.IS_AUTH();
+      if(isAuthenticated) next({ name: '404' })
+      else next()
+    }
+  },
+  {
+    path: '/404',
+    name: '404',
+    component: page404
   }
 ]
 
