@@ -13,7 +13,7 @@ export default new Vuex.Store({
     user: {
       userId: null,
       token: null,
-      userData: ''
+      userData: null
     }
   },
   mutations: {
@@ -28,6 +28,11 @@ export default new Vuex.Store({
     },
     updateUser(state, payload) {
       state.user.userData = payload;
+    },
+    clearUser(state) {
+      state.user.userId = null,
+      state.user.token = null,
+      state.user.userData = null;
     }
   },
   actions: {
@@ -78,6 +83,9 @@ export default new Vuex.Store({
         }
         context.commit('setUser', userData);
       }
+    },
+    logOut(context) {
+      context.commit('clearUser');
     }
   },
   modules: {

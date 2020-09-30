@@ -94,6 +94,10 @@ let getUser = {
             return false;
         }
     },
+    END_SESSION() {
+        sessionStorage.removeItem("miitoAppuUser");
+        store.dispatch('logOut');
+    },
     byId(id, withFullData) {
         const data = store.state.data;
         const events = data.events;

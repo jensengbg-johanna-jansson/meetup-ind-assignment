@@ -21,11 +21,13 @@
             <router-link to="/">About</router-link>
             <router-link to="/">Contact</router-link>
             <router-link to="/profile">Profile</router-link>
+            <button class="menu-nav-sign-out" @click="signOut">Sign Out</button>
         </nav>
     </header>
 </template>
 
 <script>
+import getUser from '@/js/userDataFunctions.js';
 export default {
     name: 'mainNav',
     data() {
@@ -46,6 +48,10 @@ export default {
         },
         goToSignIn() {
             this.$router.push('/signin');
+        },
+        signOut() {
+            getUser.END_SESSION();
+            this.$router.push('/');
         }
     },
     computed: {
@@ -118,13 +124,18 @@ export default {
             box-shadow: 40vw 0 5px rgba(255, 255, 255, .5);
             z-index: 1;
 
-            a {
+            a, &-sign-out {
                 color: #fff;
                 text-decoration: none;
                 text-transform: uppercase;
                 font-size: 2rem;
                 font-weight: 300;
                 padding: 2rem;
+            }
+            &-sign-out {
+                background: none;
+                border: none;
+                text-align: left;
             }
         }
     }
