@@ -54,13 +54,14 @@ export default {
 
             getUser.addEvent(eventId)
             .then(res => {
+                console.log('hejsan!!!!');
+
                 if(res.success === true) {
                     this.$router.push('/event/' + eventId + '/join');
                 } else {
                     console.log('Error: Could not add event to user');
                 }
             })
-
         },
         setLocationDetails() {
             this.locationDetailsData = {
