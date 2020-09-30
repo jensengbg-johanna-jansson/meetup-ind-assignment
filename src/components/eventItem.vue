@@ -1,5 +1,5 @@
 <template>
-    <article class="event-item" @click="openEvent">
+    <article class="event-item" @click="openEvent" :class="{ pastEvent: hasEnded }">
         <div class="event-item-date">
             <span class="event-item-date-container">
                 <p class="month">{{ dateMonth }}</p>
@@ -39,6 +39,17 @@ export default {
             const day = date.getDate();
 
             return day;
+        },
+        hasEnded() {
+            const currentDate = Date.now();
+            const eventDate = Date.parse(this.eventItem.date);
+            const timeDiff = currentDate-eventDate;
+
+            if(timeDiff <= 0) {
+                return false;
+            } else {
+                return true;
+            }
         }
     }
 }
@@ -97,5 +108,8 @@ export default {
             font-size: .8;
             opacity: .8;
         }
+    }
+    .pastEvent {
+        opacity: .7;
     }
 </style>
