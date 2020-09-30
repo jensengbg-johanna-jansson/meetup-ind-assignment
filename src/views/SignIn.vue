@@ -59,14 +59,10 @@ export default {
                 let user = this.$store.state.user;
                 if(user.userId != null && user.token != null) {
                     this.$router.push('/profile/' + user.userId);
-
-                    return true;
                 } else {
                     let errorElem = document.querySelector('.sign-in-form-error');
 
                     errorElem.innerHTML = 'The email or password is incorrect.'
-
-                    return false;
                 }
             })
         },
