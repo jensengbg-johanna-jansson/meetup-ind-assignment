@@ -1,9 +1,5 @@
-import store from '../store'
-/*
-const data = require('../assets/database.json');
-const users = data.users;
-const events = data.events;
-*/
+import store from '../store';
+import axios from "axios";
 
 let getUser = {
     createToken(userEmail) {
@@ -124,6 +120,53 @@ let getUser = {
                 return user; 
             }
         }
+    },
+    findUserToUpdate(users) {
+        let userId = store.state.user.userId;
+        for (let i = 0; i < users.length; i++) {
+            if (userId === users[i].userId) {
+                return i;
+            }
+        }
+    },
+    addEvent(eventId) {
+        const getUrl = 'https://api.jsonbin.io/b/5f745be2302a837e9571098f';
+        const token = '$2b$10$yK7Wd8VYpPBMMgz591x2WeUPqba/X66/n0vsSS7AQsXM90RmkyS.a';
+        let data;
+        
+        return axios.get(getUrl, {
+            headers: {
+                "secret-key": token,
+            },
+        }).then(res => {
+            data = res.data;
+
+            let newDataObject = data; 
+            let eventToAdd = parseInt(eventId);
+            let userToUpdate = this.findUserToUpdate(data.users);    
+    
+            newDataObject.users[userToUpdate].events.push(eventToAdd);
+            console.log(newDataObject);
+            
+            return axios.put(getUrl, newDataObject, {
+                headers: {
+                    "secret-key": token,
+                    "versioning": false
+                },
+            })
+        })
+        .then(req => {
+            console.log(req);
+            if(req.data.success) {
+                let userId = store.state.user.userId;
+                store.dispatch('getData');
+                store.dispatch('updateUserData', userId);
+                return { success: true }
+            } else {
+                return { success: false }
+            }
+        })
+        .catch(error => console.log(error))
     }
 }
 

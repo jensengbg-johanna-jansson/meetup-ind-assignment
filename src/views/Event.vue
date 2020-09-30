@@ -10,8 +10,7 @@
 
             <addButton 
                 class="event-info-join-button" 
-                :hasJoined="false" 
-                :hasEnded="false" 
+                :hasEnded="hasEnded" 
                 @click.native="addUserToEvent"
             />
         </article>
@@ -33,6 +32,7 @@
 import locationDetails from '@/components/locationDetails.vue';
 import addButton from '@/components/ui-components/addButton.vue';
 import getEvent from '@/js/eventDataFunctions.js';
+import getUser from '@/js/userDataFunctions.js';
 import review from '@/components/review.vue';
 
 export default {
@@ -50,7 +50,17 @@ export default {
     },
     methods: {
         addUserToEvent() {
-            this.$router.push('/event/1/join');
+            let eventId = this.$route.params.eventId;
+
+            getUser.addEvent(eventId)
+            .then(res => {
+                if(res.success === true) {
+                    this.$router.push('/event/' + eventId + '/join');
+                } else {
+                    console.log('Error: Could not add event to user');
+                }
+            })
+
         },
         setLocationDetails() {
             this.locationDetailsData = {
@@ -67,11 +77,24 @@ export default {
         setEventData() {
             let eventId = this.$route.params.eventId;
             let event = getEvent.byId(eventId);
-            console.log(event);
+            
             this.eventData = event;
 
             this.setLocationDetails();
         },
+    },
+    computed: {
+        hasEnded() {
+            const currentDate = Date.now();
+            const eventDate = Date.parse(this.eventData.date);
+            const timeDiff = currentDate-eventDate;
+
+            if(timeDiff <= 0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
     },
     created() {
         this.setEventData();
