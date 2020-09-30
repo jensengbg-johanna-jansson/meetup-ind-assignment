@@ -112,7 +112,7 @@ export default {
             outline: none;
         }
         &-nav {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             height: 100vh;
@@ -121,7 +121,7 @@ export default {
             @include gradient(0deg);
             display: flex;
             flex-direction: column;
-            box-shadow: 40vw 0 5px rgba(255, 255, 255, .5);
+            box-shadow: 45vw 0 5px rgba(255, 255, 255, .5);
             z-index: 1;
 
             a, &-sign-out {

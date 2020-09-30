@@ -26,15 +26,30 @@ export default {
             let eventId = parseInt(this.$route.params.eventId);
 
             this.$router.push('/event/' + eventId + '/newreview');
+        },
+        isLoggedIn() {
+            let user = this.$store.state.user;
+
+            if(user.userId != null) {
+                return true;
+            } else {
+                return false;
+            }
         }
     },
     computed: {
         isAttending() {
-            let userEvets = this.$store.state.user.userData.events;
-            let eventId = parseInt(this.$route.params.eventId);
+            let isLoggedIn = this.isLoggedIn();
+            
+            if(isLoggedIn) {
+                let userEvets = this.$store.state.user.userData.events;
+                let eventId = parseInt(this.$route.params.eventId);
 
-            if(userEvets.includes(eventId)) {
-                return true;
+                if(userEvets.includes(eventId)) {
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
                 return false;
             }

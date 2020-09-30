@@ -12,9 +12,10 @@
                 name="review" 
                 id="review"
                 placeholder="Add a few words..."
+                max-length="500"
                 v-model="reviewInput"
                 @input="countLetters"></textarea>
-            <span class="input-limit"><p class="input-limit-counter">{{ letterCount }}</p>/250</span>
+            <span class="input-limit"><p class="input-limit-counter">{{ letterCount }}</p>/500</span>
         </div>
         <span class="new-review-error">{{ errorMsg }}</span>
         <filledButton 
