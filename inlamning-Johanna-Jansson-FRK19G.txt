@@ -1,0 +1,114 @@
+Indivuduell Inlämningsuppgift i TDD & Docker
+
+Av: Johanna Jansson, FRK19G
+
+/* Använda Tekninker/Level ups */
+  GitHub Projects
+  Github Actions
+    - för CI, merges in i master är disabled tills alla test är gröna
+  Heroku
+    - för publicering av app
+  JSONbin.io
+    - för remote databas
+  Axios
+    - för anrop till databasen
+
+/* Limitations */
+  Mobile First
+    Desktop-version av sidan görs om tid finns
+      X desktop-version ej gjord
+
+/* Länkar */
+  Figma-skiss: https://www.figma.com/file/05bSPHcPTEFgE88ahj68CX/meetup-individual-assignment?node-id=0%3A1
+  GitHub-repo: https://github.com/jensengbg-johanna-jansson/meetup-ind-assignment
+  Heroku app: https://miitoappu.herokuapp.com/
+
+/* Egen Reflektion Kring Kursinnehållet */
+  Kursen går igenom en viktig del av all webbutveckling; vägen tills en sida blivit deployad. Fokus känns som att det har 
+  legat på TDD, vilket är en viktig del att kunna, då det kan underlätta CI/CD. Genom att ha tester i ett projekt 
+  kan man säkerställa att appen inte har allvarliga errors när den ska deployas. Dessutom, genom att använda sig av verktyg 
+  som GitHub Actions kan man t.ex. hindra en pull request från att mergas in i production-branchen om det finns röda testfall,
+  vilket gör att man inte råkar pusha felaktig kod till production av misstag. Dock känner jag att det hade varit intressant 
+  om kursen hade rört vid denna delen lite mer, t.ex. genom att gå igenom GitHub Actions.
+  Det var jättekul att kursen gick igenom docker och hur man kan deploya en sida. Detta är något som jag saknat i programmet
+  och jag har ofta kännt att 'visst jag kan skapa en webbsida, men hur visar jag den för andra?'. Med detta känns det som att 
+  den sista pusselbiten i webbutveckling äntligen har lagts och vi kan nu börja få upp egna projekt online.
+
+  * En tanke jag har haft om den individuella inlämningsuppgiften:
+    Eftersom kursen ligger väldigt lämpligt vid tiden för LIAplats-sökning för oss och då kursen går igenom hur man deployar ett 
+    projekt online hade det varit kul om man hade kombinerat dessa genom en uppgift som går ut på att skapa en egen portfolio-hemsida.
+    När vi ändå går igenom hur man deployar en sida, hade det varit kul om vi gjorde något som vi själva har anvädning för. Det 
+    hade även skapat en kul länk till uppföljnings-delen av kursen då detta hade varit en sida vi faktiskt hade velat underhålla, 
+    vilket motiverar till att lära sig mer om TDD och CI/CD även efter kursens slut.
+
+/* Basic App Structure */
+    /
+    /search
+    /event/:eventId
+      /newreview
+      /join
+    /signup
+    /signin
+    /profile/:userId 
+    /404   
+
+/* Basic Data Structure */
+    Events
+      eventId
+      eventTitle
+      startTime
+      endTime
+      date
+      host
+      locationPlace
+      locationStreet
+      locationZip
+      locationCity
+      locationNotes
+      description
+      reviews
+      timestamp
+    Reviews
+      reviewId
+      userId
+      rating
+      review
+      timestamp
+    Users
+      userId
+      name
+      email
+      password
+      events
+
+/* Krav Spec */
+  Det ska gå att...
+    - se kommande meetups
+    - anmäla sig till meetups,
+    - recensera en meetup man har varit på
+    - logga in på en egen användare
+
+/* User Stories */
+    Det ska gå att se kommande meetups
+        - Som användare vill jag se en lista på alla meetups som finns så jag kan browsa fritt
+          om jag inte vet vad för meetup jag vill gå på
+        - Som användare vill jag kunna filtrera meetups efter mina preferenser så jag kan se vilka
+          meetups som är intrssanta för just mig
+        - Som användare vill jag kunna gå in på en meetup och se mer info så jag vet vad det är för
+          typ av meetup
+
+    Det ska gå att anmäla sig till meetups
+        - Som användare vill jag kunna anmäla mig till en meetup så att jag kan gå på den
+        - Som användare vill jag kunna se alla meetups jag är anmäld till så jag kan hålla koll
+
+    Det ska gå att recensera en meetup man varit på
+        - Som användare vill jag kunna skriva recensioner på meetups jag varit på så att jag kan 
+          berätta för andra vad jag tyckte om dom
+        - Som användare vill jag kunna läsa vad andra tyckte om eventet så jag vet hur det var ifall 
+          det hålls igen
+
+    Det ska gå att logga in på en egen användare
+        - Som användare vill jag kunna logga in på min egen användare så att jag kan få en mer 
+          personlig användarupplevelse
+        - Som användare vill jag kunna se en profilsida med all min information så att jag vet 
+          vilken information som finns om mig på sidan
