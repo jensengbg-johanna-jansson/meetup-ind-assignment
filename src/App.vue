@@ -3,18 +3,21 @@
     <mainNav />
     <loader v-if="apiStateLoading" />
     <router-view v-if="apiStateLoaded" />
+    <mainFooter />
   </div>
 </template>
 
 <script>
   import mainNav from '@/components/nav.vue';
   import loader from '@/components/ui-components/loader.vue';
+  import mainFooter from '@/components/footer.vue';
   import apiEnum from '@/js/apiEnum.js';
 
   export default { 
     components: {
       mainNav,
-      loader
+      loader,
+      mainFooter
     },
     computed: {
       apiStateLoaded() {

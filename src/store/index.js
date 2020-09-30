@@ -44,7 +44,7 @@ export default new Vuex.Store({
       }
     },
     getData(context) {
-      const getUrl = 'https://api.jsonbin.io/b/5f733b1d65b18913fc5624cb';
+      const getUrl = 'https://api.jsonbin.io/b/5f745be2302a837e9571098f';
       const token = '$2b$10$yK7Wd8VYpPBMMgz591x2WeUPqba/X66/n0vsSS7AQsXM90RmkyS.a';
       
       return axios.get(getUrl, {

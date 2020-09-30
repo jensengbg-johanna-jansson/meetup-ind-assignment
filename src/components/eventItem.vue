@@ -1,9 +1,9 @@
 <template>
-    <article class="event-item" @click="openEvent">
+    <article class="event-item" @click="openEvent" :class="{ pastEvent: hasEnded }">
         <div class="event-item-date">
             <span class="event-item-date-container">
-                <p class="month">Sep</p>
-                <p class="day">14</p>
+                <p class="month">{{ dateMonth }}</p>
+                <p class="day">{{ dateDay }}</p>
             </span>
         </div>
         <p class="event-item-time">{{ eventItem.startTime }} - {{ eventItem.endTime }}</p>
@@ -23,6 +23,32 @@ export default {
         openEvent() {            
             if(!this.disabled) {
                 this.$router.push('/event/' + this.eventItem.eventId);
+            }
+        }
+    },
+    computed: {
+        dateMonth() {
+            let monthArray = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+            const date = new Date(this.eventItem.date);
+            const month = monthArray[date.getMonth()];
+            
+            return month;
+        },
+        dateDay() {
+            const date = new Date(this.eventItem.date);
+            const day = date.getDate();
+
+            return day;
+        },
+        hasEnded() {
+            const currentDate = Date.now();
+            const eventDate = Date.parse(this.eventItem.date);
+            const timeDiff = currentDate-eventDate;
+
+            if(timeDiff <= 0) {
+                return false;
+            } else {
+                return true;
             }
         }
     }
@@ -47,6 +73,9 @@ export default {
             margin-right: 1rem;
             border-radius: .3rem;
             @include gradient(0deg);
+            display: flex;
+            max-height: 5rem;
+            align-self: center;
 
             &-container {
                 @include centeredFlex();
@@ -79,5 +108,8 @@ export default {
             font-size: .8;
             opacity: .8;
         }
+    }
+    .pastEvent {
+        opacity: .7;
     }
 </style>

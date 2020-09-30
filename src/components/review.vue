@@ -1,6 +1,6 @@
 <template>
     <div class="review">
-        <reviewList :reviewData="reviews" />
+        <reviewList v-if="reviews.length > 0" :reviewData="reviews" />
         <primaryButton 
             v-if="isAttending" 
             :buttonText="'write review'"

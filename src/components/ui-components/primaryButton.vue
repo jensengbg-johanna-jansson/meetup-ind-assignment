@@ -13,7 +13,7 @@ export default {
 
 <style lang="scss" scoped>
     .primary-button {
-        border: none;
+        border: 1px solid $pink;
         background: #fff;
         font-family: 'Roboto', sans-serif;
         color: $pink;
@@ -22,7 +22,7 @@ export default {
         font-size: 1.1rem;
         border-radius: 5rem;
         padding: .7rem 2rem;
-        box-shadow: 0 0 4px rgba(0, 0, 0, .3);
+        box-shadow: 0 0 2px rgba(0, 0, 0, .2);
     }
     .primary-button:focus {
         outline: none;
