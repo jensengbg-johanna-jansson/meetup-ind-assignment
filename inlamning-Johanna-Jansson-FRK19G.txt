@@ -17,6 +17,15 @@ Av: Johanna Jansson, FRK19G
   Mobile First
     Desktop-version av sidan görs om tid finns
       X desktop-version ej gjord
+  Endast Sign in
+    Fokus har lagts på att ska funktion för inloggning. Sidan för Sign Up är därför inte funktionell
+    Inloggningsuppgifter:
+      användare 1:
+        email: sarah.williams@gmail.com
+        password: 12345678      
+      användare 2:
+        email: mathilda.lundgren@gmail.com
+        password: 12345678
 
 /* Länkar */
   Figma-skiss: https://www.figma.com/file/05bSPHcPTEFgE88ahj68CX/meetup-individual-assignment?node-id=0%3A1
