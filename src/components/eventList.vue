@@ -17,10 +17,6 @@ export default {
     },
     props: {
         eventsList: Array
-    },
-    mounted() {
-        console.log('EventList:');
-        console.log(this.eventsList);
     }
 }
 </script>

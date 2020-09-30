@@ -4,12 +4,12 @@
             <button @click="toggleNav" class="menu-button"><i class="fas fa-bars"></i></button>
             <h1 class="menu-logo">MiitoAppu</h1>
             <button v-if="isLoggedIn" 
-                class="menu-user" 
+                class="menu-user menu-profile" 
                 @click="goToProfile">
                 <i class="fas fa-user-circle"></i>
             </button>
             <button v-else 
-                class="menu-user" 
+                class="menu-user menu-sign-in" 
                 @click="goToSignIn">
                 <i class="fas fa-sign-in-alt"></i>
             </button>

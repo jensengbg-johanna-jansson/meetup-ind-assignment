@@ -3,7 +3,13 @@ import addButton from '@/components/ui-components/addButton.vue';
 
 describe('addButton tests', () => {
     it('should display join-icon as default', () => {
-        let wrapper = shallowMount(addButton);
+        let wrapper = shallowMount(addButton , {
+            computed: {
+                hasJoined() {
+                  return false
+                }
+            }
+        });
 
         const expected = true;
 
@@ -17,8 +23,10 @@ describe('addButton tests', () => {
 
     it('should not disable button if user has not joined event', () => {
         let wrapper = shallowMount( addButton, {
-            propsData: {
-                hasJoined: false
+            computed: {
+                hasJoined() {
+                  return false
+                }
             }
         });
         let button = wrapper.find('button');
@@ -31,8 +39,10 @@ describe('addButton tests', () => {
 
     it('should display check-icon if the user has already joined the event', () => {
         let wrapper = shallowMount( addButton, {
-            propsData: {
-                hasJoined: true
+            computed: {
+                hasJoined() {
+                  return true
+                }
             }
         });
         let icon = wrapper.find('i');
@@ -46,8 +56,10 @@ describe('addButton tests', () => {
 
     it('should disable button if the user has already joined the event', () => {
         let wrapper = shallowMount( addButton, {
-            propsData: {
-                hasJoined: true
+            computed: {
+                hasJoined() {
+                  return true
+                }
             }
         });
         let button = wrapper.find('button');
@@ -62,6 +74,11 @@ describe('addButton tests', () => {
         let wrapper = shallowMount( addButton, {
             propsData: {
                 hasEnded: true
+            },
+            computed: {
+                hasJoined() {
+                  return false
+                }
             }
         });
         let button = wrapper.find('button');

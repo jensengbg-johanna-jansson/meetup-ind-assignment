@@ -75,8 +75,6 @@ export default {
 
                 postReview.post(reviewObject)               
                 .then((res) => {
-                    console.log(res);
-
                     if(res.success) {
                         this.errorMsg = 'Review was added';
                     } else {
