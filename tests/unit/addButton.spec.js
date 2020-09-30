@@ -3,7 +3,7 @@ import addButton from '@/components/ui-components/addButton.vue';
 
 describe('addButton tests', () => {
     it('should display join-icon as default', () => {
-        let wraper = shallowMount(addButton , {
+        let wrapper = shallowMount(addButton , {
             computed: {
                 hasJoined() {
                   return false
